@@ -25,6 +25,7 @@ Android could also be used in future but with reduced capabilities.
 - Latest OpenGL 3D and 2D.
 - Large Maps for 2D and 3D.
 - Fake 3D mode, using only 2D.
+- 2D drawing functions ( Lines, Rectangles, Circles, Triangles, Text, and many others )
 - Realistic Rendering in 3D.
 - Automatic Effects in 3D ( Shadows, Glows, Lights )
 - 3D Sounds.
@@ -34,10 +35,12 @@ Android could also be used in future but with reduced capabilities.
 - Resolutions per monitor up to 4K.
 - Smart Blending and Bending for projetions in shaped locals.
 - Realistic Water, Ocean, Sky, Vegetation.
+- Particles 2D and 3D
 - Interface with Gamepads, Joysticks.
 - Touch Screen support.
 - Interface with Arcade joysticks, Buttons, Gun's, Spinners, and Led controllers.
 - Windows Game Engine Editor with Multiple Editors ( Sprites, Tile Maps, Vector Roads, 3D world editor, Sound )
+- Execution Script Language for simple demos and games
 
 
 ## License
