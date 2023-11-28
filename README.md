@@ -14,7 +14,7 @@ Using C++ we can use existing game libraries and focus in the main functionaliti
 ## Why use two frameworks instead of only one?
 The game will have 2D and 3D modes, and the 3D mode will be mostly ortographic.
 For the 2D I decided to go for low level operations in order to have no limitations. It will be a slow process.
-I will test BGFX in the first place because of the working platforms.
+I will test SDL3 in the first place because of the working platforms and the simplicity.
 For the 3D, I want to have a running version very quickly, so a working rendering technology would be the best option.
 I choosed OgreNext because of the rendering capabilities and the documentation.
 
