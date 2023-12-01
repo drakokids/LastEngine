@@ -1,0 +1,18 @@
+program BGE;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  MainUnit in 'MainUnit.pas' {MainForm},
+  ProjectProperties in 'ProjectProperties.pas' {FormProjectProperties},
+  TreeViewNode in 'TreeViewNode.pas',
+  MenuOperations in 'MenuOperations.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TMainForm, MainForm);
+  Application.CreateForm(TFormProjectProperties, FormProjectProperties);
+  Application.Run;
+end.

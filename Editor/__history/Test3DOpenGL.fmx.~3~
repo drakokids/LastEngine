@@ -1,0 +1,27 @@
+object FormTestOpenGL: TFormTestOpenGL
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 659
+  ClientWidth = 847
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Position.X = 64.000000000000000000
+    Position.Y = 56.000000000000000000
+    Size.Width = 689.000000000000000000
+    Size.Height = 529.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+  end
+  object Timer1: TTimer
+    Interval = 50
+    OnTimer = Timer1Timer
+    Left = 24
+    Top = 160
+  end
+end
