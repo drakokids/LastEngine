@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lastengine3d", "lastengine3d.vcxproj", "{65023855-AE9A-4ADF-9D58-C776E0EF4EC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65023855-AE9A-4ADF-9D58-C776E0EF4EC2}.Debug|x64.ActiveCfg = Debug|x64
+		{65023855-AE9A-4ADF-9D58-C776E0EF4EC2}.Debug|x64.Build.0 = Debug|x64
+		{65023855-AE9A-4ADF-9D58-C776E0EF4EC2}.Debug|x86.ActiveCfg = Debug|Win32
+		{65023855-AE9A-4ADF-9D58-C776E0EF4EC2}.Debug|x86.Build.0 = Debug|Win32
+		{65023855-AE9A-4ADF-9D58-C776E0EF4EC2}.Release|x64.ActiveCfg = Release|x64
+		{65023855-AE9A-4ADF-9D58-C776E0EF4EC2}.Release|x64.Build.0 = Release|x64
+		{65023855-AE9A-4ADF-9D58-C776E0EF4EC2}.Release|x86.ActiveCfg = Release|Win32
+		{65023855-AE9A-4ADF-9D58-C776E0EF4EC2}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A17ECDC4-722B-424A-B83C-F8CCC37CAC5B}
+	EndGlobalSection
+EndGlobal
