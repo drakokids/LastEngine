@@ -29,9 +29,25 @@ Probably the Lazarus version could be replaced in the future with a c++ version,
 
 ## What platforms will it support?
 Windows for development platform (Mac could be used using parallels Desktop).
-The engine will compile for windows, MacOs, Linux, Raspberry Pi, Android and iOS. Web platform only planned for now.
+For 2D projects, the engine will compile for windows, MacOs, Linux, Raspberry Pi, Android and iOS. 
+
+For 3D Projects, it will compile for Windows, MacOS, Linux and Raspberry Pi.
+
+Web platform only planned for now.
 
 It it also possible to create a game without compiling, just by adding the necessary scrits and media files.
+
+## Suported Hardware
+- Windows on Mac Computer for Development.
+- GPU compatible with the rendering sdk.
+- GPIO Hardware (Raspberry Pi, UpBoard)
+- Digital and Analog Arcade Controllers
+- Arcade Guns, Spinners & Led Controllers
+- Touch Monitors
+- Stereo, 5.1 & 7.1 Sound Cards
+- Joysticks & Gamepads
+- Mouse & Keyboards
+- WebCameras
 
 ## Main Functionalities
 - High Quality 2D and 3D.
