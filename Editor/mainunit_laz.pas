@@ -20,6 +20,8 @@ type
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
     Separator1: TMenuItem;
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
   private
 
@@ -29,6 +31,7 @@ type
 
 var
   MainForm: TMainForm;
+  MenuOperations: TStrings;
 
 implementation
 
@@ -39,6 +42,16 @@ implementation
 procedure TMainForm.MenuItem6Click(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+begin
+  MenuOperations:=TStringList.Create;
+end;
+
+procedure TMainForm.FormDestroy(Sender: TObject);
+begin
+  MenuOperations.free;
 end;
 
 end.

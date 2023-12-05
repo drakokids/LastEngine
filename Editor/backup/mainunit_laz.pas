@@ -14,6 +14,13 @@ type
   TMainForm = class(TForm)
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    Separator1: TMenuItem;
+    procedure MenuItem6Click(Sender: TObject);
   private
 
   public
@@ -26,6 +33,13 @@ var
 implementation
 
 {$R *.lfm}
+
+{ TMainForm }
+
+procedure TMainForm.MenuItem6Click(Sender: TObject);
+begin
+  Close;
+end;
 
 end.
 
