@@ -1,4 +1,5 @@
 object MainForm: TMainForm
+<<<<<<< Updated upstream
   Left = 283
   Height = 1183
   Top = 173
@@ -4527,6 +4528,19 @@ object MainForm: TMainForm
   object MainMenu1: TMainMenu
     Left = 544
     Top = 16
+=======
+  Left = 258
+  Height = 795
+  Top = 159
+  Width = 1326
+  Caption = 'Last Engine Beta'
+  DesignTimePPI = 144
+  Menu = MainMenu1
+  LCLVersion = '2.2.6.0'
+  object MainMenu1: TMainMenu
+    Left = 69
+    Top = 65
+>>>>>>> Stashed changes
     object MenuItem1: TMenuItem
       Caption = 'File'
       object MenuItem2: TMenuItem
