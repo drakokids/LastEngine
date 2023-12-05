@@ -11,24 +11,121 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="142"/>
       </Unit>
       <Unit>
         <Filename Value="mainunit_laz.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="MainForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="7"/>
-        <CursorPos X="9" Y="41"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="17"/>
+        <CursorPos X="31" Y="63"/>
+        <UsageCount Value="142"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="menu.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="62" Y="37"/>
+        <UsageCount Value="142"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../lazarus/lcl/include/menuitem.inc"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="467"/>
+        <CursorPos Y="492"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
     </Units>
-    <JumpHistory>
+    <JumpHistory HistoryIndex="20">
       <Position>
         <Filename Value="mainunit_laz.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="mainunit_laz.pas"/>
+        <Caret Line="13" Column="122"/>
+      </Position>
+      <Position>
+        <Filename Value="mainunit_laz.pas"/>
+        <Caret Line="52" Column="28" TopLine="21"/>
+      </Position>
+      <Position>
+        <Filename Value="mainunit_laz.pas"/>
+        <Caret Line="49" Column="17" TopLine="21"/>
+      </Position>
+      <Position>
+        <Filename Value="menu.pas"/>
+        <Caret Line="24" Column="9"/>
+      </Position>
+      <Position>
+        <Filename Value="menu.pas"/>
+        <Caret Line="22" Column="36"/>
+      </Position>
+      <Position>
+        <Filename Value="menu.pas"/>
+        <Caret Line="31" Column="34"/>
+      </Position>
+      <Position>
+        <Filename Value="menu.pas"/>
+        <Caret Line="32" Column="46"/>
+      </Position>
+      <Position>
+        <Filename Value="mainunit_laz.pas"/>
+        <Caret Line="50" Column="23" TopLine="8"/>
+      </Position>
+      <Position>
+        <Filename Value="mainunit_laz.pas"/>
+        <Caret Line="42" Column="11" TopLine="9"/>
+      </Position>
+      <Position>
+        <Filename Value="mainunit_laz.pas"/>
+        <Caret Line="45" Column="63" TopLine="11"/>
+      </Position>
+      <Position>
+        <Filename Value="menu.pas"/>
+        <Caret Line="34"/>
+      </Position>
+      <Position>
+        <Filename Value="menu.pas"/>
+        <Caret Line="22"/>
+      </Position>
+      <Position>
+        <Filename Value="menu.pas"/>
+        <Caret Line="23"/>
+      </Position>
+      <Position>
+        <Filename Value="menu.pas"/>
+        <Caret Line="24"/>
+      </Position>
+      <Position>
+        <Filename Value="menu.pas"/>
+        <Caret Line="22"/>
+      </Position>
+      <Position>
+        <Filename Value="menu.pas"/>
+        <Caret Line="26"/>
+      </Position>
+      <Position>
+        <Filename Value="menu.pas"/>
+        <Caret Line="27"/>
+      </Position>
+      <Position>
+        <Filename Value="menu.pas"/>
+        <Caret Line="23" Column="19"/>
+      </Position>
+      <Position>
+        <Filename Value="mainunit_laz.pas"/>
+        <Caret Line="53" TopLine="11"/>
+      </Position>
+      <Position>
+        <Filename Value="mainunit_laz.pas"/>
+        <Caret Line="63" Column="31" TopLine="17"/>
       </Position>
     </JumpHistory>
     <RunParams>

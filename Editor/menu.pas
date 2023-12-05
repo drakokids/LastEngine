@@ -19,16 +19,50 @@ procedure NewMenuItem(ParentItem: TMenuItem; text,operationName,param1,param2: s
 var menuItem: TMenuItem;
     len:integer;
 begin
-   menuItem:=TMenuItem.Create(self);
+   menuItem:=TMenuItem.Create(nil);
    MenuItem.Caption:=text;
-   len:=MenuOperations.
+   len:=MenuOperations.Count;
+   MenuItem.tag:=len;
    MenuOperations.Add('MENU_'+'='+operationName+','+param1+','+param2);
    ParentItem.Add(menuItem);
 end;
 
 procedure BuildMenu(menuObject: TMainMenu);
+var item: TMenuItem;
 begin
-   menuObject.Items.Add();
+   MenuObject.items.clear;
+   NewMenuItem(menuObject.Items,'Project','','','');
+   item:=MenuObject.items[menuObject.items.Count-1];
+
+   NewMenuItem(Item,'New','','','');
+   open
+   reopen
+   save
+   save as
+   Configure
+   exit
+
+   Run
+      compile
+      preview
+      export
+   Tools
+        Options
+        Sprite Editor
+        Terrain Editor
+        Tilemap Editor
+        Roads Editor
+   View
+       Game Editor
+       Code Editor
+   Help
+       About
+
+   Tests
+        Test3D
+
+
+
 end;
 
 procedure MenuClicked(sender: TObject);
