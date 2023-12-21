@@ -18,11 +18,10 @@ begin
   WINDOWS_CAPTION:=  'Last Engine';
   SCREEN_BPP:= 32;
   FPS_INTERVAL:= 1000;
+  windowFullScreen:=true;
 
-  Init_SDL;
+  Init_SDL(800,600);
   Init_OpenGL;
-  SDL_AddTimer(FPS_INTERVAL,@glTimer,nil);
-  glResizeWindow( SCREEN_WIDTH, SCREEN_HEIGHT );
   while ( Done <> -1 ) do
   begin
     glHandleEvents;

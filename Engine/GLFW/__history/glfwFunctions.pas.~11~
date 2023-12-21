@@ -1,0 +1,102 @@
+unit glfwFunctions;
+
+interface
+
+uses
+  System.StartUpCopy,
+  {$IF Defined(MSWINDOWS)}
+  Winapi.OpenGL,
+  {$ELSE}
+  Macapi.CocoaTypes,
+  {$ENDIF }
+  System.Math.Vectors,
+  Neslib.Glfw3;
+
+type
+  TVertex = record
+    X, Y: Single;
+    R, G, B: Single;
+  end;
+
+var
+  Window: TGLFWwindow;
+  VertexBuffer, VertexShader, FragmentShader, ShaderProgram: GLuint;
+  MVPLocation, VPosLocation, VColLocation: GLint;
+  Source: PAnsiChar;
+  Ratio: Single;
+  Width, Height: Integer;
+  M, P, MVP: TMatrix3D;
+
+procedure ErrorCallback(error: Integer; const description: PAnsiChar); cdecl;
+procedure InitGlfw(sizeW,sizeH: integer; caption: string);
+procedure StopGlfw;
+
+
+implementation
+
+procedure ErrorCallback(error: Integer; const description: PAnsiChar); cdecl;
+var
+  Desc: String;
+begin
+  Desc := String(AnsiString(description));
+  writeln('GLFW Error ' +  Desc);
+end;
+
+procedure InitGlfw(sizeW,sizeH: integer; caption: string);
+begin
+  glfwSetErrorCallback(ErrorCallback);
+  if (glfwInit = 0) then
+   begin
+    writeln('Unable to initialize GLFW');
+    halt(0);
+   end;
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+
+  Window := glfwCreateWindow(sizeW, sizeH, PAnsichar(caption), 0, 0);
+  if (Window = 0) then
+  begin
+    glfwTerminate;
+    writeln('Unable to create GLFW window');
+    halt(0);
+  end;
+
+  glfwSetKeyCallback(Window, KeyCallback);
+
+  glfwMakeContextCurrent(Window);
+  glfwSwapInterval(1);
+
+  {$IF Defined(MSWINDOWS)}
+  InitOpenGLext;
+  {$ELSE}
+  InitOpenGL;
+  {$ENDIF}
+
+  CompileShaders;
+
+  MVPLocation := glGetUniformLocation(ShaderProgram, 'MVP');
+  VPosLocation := glGetAttribLocation(ShaderProgram, 'vPos');
+  VColLocation := glGetAttribLocation(ShaderProgram, 'vCol');
+
+  glEnableVertexAttribArray(VPosLocation);
+  glVertexAttribPointer(VPosLocation, 2, GL_FLOAT, GL_FALSE, SizeOf(Single) * 5,
+    nil);
+
+  glEnableVertexAttribArray(VColLocation);
+  glVertexAttribPointer(VColLocation, 3, GL_FLOAT, GL_FALSE, SizeOf(Single) * 5,
+    Pointer(SizeOf(Single) * 2));
+
+
+
+
+
+end;
+
+procedure StopGlfw;
+begin
+  glfwDestroyWindow(Window);
+  glfwTerminate;
+end;
+
+
+end.

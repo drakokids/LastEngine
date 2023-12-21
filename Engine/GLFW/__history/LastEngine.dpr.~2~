@@ -1,0 +1,22 @@
+program LastEngine;
+
+uses
+  System.SysUtils,System.StartUpCopy,
+  {$IF Defined(MSWINDOWS)}
+  Winapi.OpenGL,
+  Winapi.OpenGLExt,
+  {$ELSEIF Defined(MACOS) and not Defined(IOS)}
+  Macapi.CocoaTypes,
+  Macapi.OpenGL,
+  {$ENDIF}
+  System.Math.Vectors,
+  Neslib.Glfw3 in '..\Glfw\Neslib.Glfw3.pas';
+
+begin
+  try
+    { TODO -oUser -cConsole Main : Insert code here }
+  except
+    on E: Exception do
+      Writeln(E.ClassName, ': ', E.Message);
+  end;
+end.

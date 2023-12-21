@@ -32,14 +32,21 @@ interface
 // generell options
 {$H+,O+,X+}
 
+
 uses
 {$IFDEF FPC}  {$MODE Delphi}
-Classes, Types, SysUtils, Forms, controls,{$IFDEF DGL_WIN}windows, {$ENDIF}
+Classes, Types, SysUtils, Forms, controls,{$IFDEF DGL_WIN}windows, {$ENDIF},
+OpenGLRenderer,   //Only OpenGL to support win+linux
 {$ELSE}
-System.Classes, System.types,System.UIConsts, System.UITypes, system.SysUtils,
-Vcl.Forms,
+ System.types,System.UIConsts, System.UITypes, system.SysUtils,system.Classes,
 {$ENDIF}
-LastEngineTypes;
+{$IFDEF FRAMEWORK_VCL}
+Vcl.Forms, GLFWRenderer, OpenGLRenderer, D2DRenderer, GDIRenderer;//Can choose
+{$ENDIF}
+{$IFDEF FRAMEWORK_FMX}
+FMX.Forms, FMXRenderer; //Renderer will use TCanvas (D2D, GPU, Mac or GDI+)
+{$ENDIF}
+
 
 type
   TLastEngine = class(TComponent)
@@ -66,8 +73,7 @@ type
 implementation
 
 { TLastEngine }
-
-uses OpenGLRenderer, D2DRenderer, GDIPRenderer;
+uses LastEngineTypes;
 
 constructor TLastEngine.Create(AOwner: TForm; GameWidth, GameHeight: integer;
   GameTitle: string; vFullScreen: boolean; RenderMode: integer);

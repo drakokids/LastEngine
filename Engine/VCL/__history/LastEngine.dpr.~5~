@@ -1,0 +1,34 @@
+program LastEngine;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils,
+  Classes,
+  Windows,
+  dglOpenGL,
+  glFunctions in 'glFunctions.pas';
+
+
+
+begin
+
+  WINDOWS_CAPTION:=  'Last Engine';
+  SCREEN_BPP:= 32;
+  FPS_INTERVAL:= 1000;
+
+  Init_SDL;
+  Init_OpenGL;
+  SDL_AddTimer(FPS_INTERVAL,@glTimer,nil);
+  glResizeWindow( SCREEN_WIDTH, SCREEN_HEIGHT );
+  while ( Done <> -1 ) do
+  begin
+    glHandleEvents;
+    glDrawScene;
+    Inc(FPSCount);
+  end;
+
+  Quit_App;
+end.

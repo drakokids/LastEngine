@@ -1,0 +1,24 @@
+program LastEngine;
+
+uses
+  System.SysUtils,
+  glfwFunctions,
+  Neslib.Glfw3 in 'Glfw\Neslib.Glfw3.pas',
+  Demo1 in 'Demo1.pas',
+  Shaders1 in 'Shaders1.pas';
+
+procedure KeyCallback(window: TGLFWwindow; key, scancode, action, mods: Integer); cdecl;
+begin
+  if (key = GLFW_KEY_ESCAPE) and (action = GLFW_PRESS) then
+    glfwSetWindowShouldClose(window, GLFW_TRUE);
+end;
+
+begin
+  InitGlfw(800,600,'Demo1');
+
+  while (glfwWindowShouldClose(Window) = 0) do
+  begin
+    DrawDemo1;
+  end;
+
+end.

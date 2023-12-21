@@ -2,13 +2,14 @@ unit glFunctions;
 
 interface
 
-uses Classes,Windows,dglOpenGL,sdl2;
+uses Classes,Windows,dglOpenGL,sdl2, vcl.forms;
 
 procedure glDrawScene;
 procedure CloseOpenGL(GLHandle, GLUHandle: HINST);
 function glResizeWindow( width : integer; height : integer ) : Boolean;
 procedure glHandleKeyPress( keysym : PSDL_keysym );
 function glTimer( interval : UInt32; param : Pointer ) : UInt32;
+procedure Init_SDL(w,h: integer);
 procedure Init_OpenGL;
 procedure Quit_App;
 procedure glHandleEvents;
@@ -25,25 +26,35 @@ var done        : Integer;
     GLHandle: HINST;
     GLUHandle: HINST;
 
+    gWindow: PSDL_Window;
+    glcontext: TSDL_GLContext;
+    e: TSDL_Event;
+    windowFullScreen: boolean;
+    WindowWidth, WindowHeight: integer;
+
 implementation
 
 procedure glDrawScene;
 begin
   // Screen- und Tiefenbuffer bereinigen
+  glViewPort(0,0,WindowWidth,WindowHeight);
+  glClearColor(0,0,1,0);
   glClear( GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT );
 
+  glMatrixMode(GL_PROJECTION);      // To operate on Model-View matrix
   glLoadIdentity;
-  glTranslatef( -1.5, 0.0, -6.0 );
+  glTranslatef( -0.5, 0.4, -0.3 );  //Translate left & up
+  //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);   mostra apenas linhas
 
   // Zeichne Dreieck
   glcolor3f(1,0,0);
   glBegin( GL_TRIANGLES );
-    glVertex3f( 0.0, 1.0, 0.0 );
+    glVertex3f( 0.0, 1.0, 1.0 );
     glVertex3f( 1.0, -1.0, 0.0 );
     glVertex3f( -1.0, -1.0, 0.0 );
   glEnd;
 
-  glTranslatef( 3.0, 0.0, 0.0 );
+  glTranslatef( 2, 0.0, -0.6 );
 
   // Zeichne ein Quadrat
   glcolor3f(0,1,0);
@@ -55,7 +66,7 @@ begin
   glEnd;
 
   // Buffer-Wechseln ==> Anzeigen
-  SDL_GL_SwapBuffers;
+  SDL_GL_SwapWindow(gWindow);
 end;
 
 procedure CloseOpenGL(GLHandle, GLUHandle: HINST);
@@ -72,8 +83,6 @@ procedure CloseOpenGL(GLHandle, GLUHandle: HINST);
       GLUHandle := INVALID_MODULEHANDLE;
     end;
 
-//    ClearProcAddresses;
-    ClearExtensions;
   end;
 
 function glResizeWindow( width : integer; height : integer ) : Boolean;
@@ -105,11 +114,8 @@ end;
 
 function glTimer( interval : UInt32; param : Pointer ) : UInt32;
 begin;
-    SDL_WM_SetCaption(
-      pChar(
-        WINDOWS_CAPTION + ' ['+IntToStr(Round(FPSCount * 1000/FPS_INTERVAL))+' FPS]') , nil);
-    FPSCount := 0;
-    Result := interval;
+   FPSCount := 0;
+   Result := interval;
 end;
 
 
@@ -125,67 +131,56 @@ begin;
     ReadExtensions;
 
     // Ausganswerte für die State-Machine setzen
-    glEnable(GL_TEXTURE_2D);	                // Aktiviert Texture Mapping
-    glShadeModel(GL_SMOOTH);	                // Aktiviert weiches Shading
-    glClearColor(0.0, 0.0, 0.0, 0.5);         // Bildschirm löschen (schwarz)
-    glClearDepth(1.0);		                    // Depth Buffer Setup
-    glEnable(GL_DEPTH_TEST);	                // Aktiviert Depth Testing
-    glDepthFunc(GL_LEQUAL);	                  // Bestimmt den Typ des Depth Testing
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+    //glEnable(GL_TEXTURE_2D);	                // Aktiviert Texture Mapping
+    //glShadeModel(GL_SMOOTH);	                // Aktiviert weiches Shading
+    //glClearColor(0.0, 0.0, 0.0, 0.5);         // Bildschirm löschen (schwarz)
+    //glClearDepth(1.0);		                    // Depth Buffer Setup
+    //glEnable(GL_DEPTH_TEST);	                // Aktiviert Depth Testing
+    //glDepthFunc(GL_LEQUAL);	                  // Bestimmt den Typ des Depth Testing
+    //glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
                                               // Qualitativ bessere Koordinaten Interpolation
 end;
 
-procedure Init_SDL;
+procedure Init_SDL(w,h: integer);
+var sdlFlags: TSDL_WindowFlags;
 begin;
   // Initalisieren vom Simple DirectMedia Layer
   if ( SDL_Init( SDL_INIT_VIDEO ) < 0 ) then
   begin
-    Log.LogError('Initalisierung von SDL schlug fehl: '+SDL_GetError,'SDL_Init');
+    Writeln('Initalisierung von SDL schlug fehl: '+SDL_GetError,'SDL_Init');
     Quit_App;
   end;
 
-  // Information über Grafikkarte einholen
-  videoInfo := SDL_GetVideoInfo;
-  if ( videoInfo = nil ) then
-  begin
-    Log.LogError('Grafikkarte liess sich nicht abfragen: '+SDL_GetError,'SDL_Init' );
-    Quit_App;
-  end;
+  sdlFlags:=SDL_WINDOW_OPENGL or SDL_WINDOW_SHOWN;
+  if windowFullScreen then
+   begin
+    sdlFlags:= sdlFlags or SDL_WINDOW_FULLSCREEN_DESKTOP;
+    w:=screen.width;
+    h:=screen.Height;
+    WindowWidth:=w;
+    WindowHeight:=h;
+   end;
 
-  // Flags für den SDL-Grafikmodus setzen
-  videoFlags := SDL_OPENGL or                  // OpenGL-Unterstützung aktivieren
-                SDL_DOUBLEBUF or               // Double Buffering aktivieren
-                SDL_HWPALETTE;                 // Palette in Hardware speichern
+  gWindow := SDL_CreateWindow('LastEngine', SDL_WINDOWPOS_UNDEFINED,
+      SDL_WINDOWPOS_UNDEFINED,w, h, sdlFlags);
+    glcontext := SDL_GL_CreateContext(gWindow);
+    if glcontext = nil then begin
+      Writeln('OpenGL context could not be created! SDL Error: ', SDL_GetError);
+      Halt(1);
+    end;
 
-  // Kann die Surface in den Speicher?
-  if ( videoInfo.hw_available <> 0 ) then
-    videoFlags := videoFlags or SDL_HWSURFACE
-  else
-    videoFlags := videoFlags or SDL_SWSURFACE;
-
-  // Wird hardware blitting unterstützt?
-  if ( videoInfo.blit_hw <> 0 ) then videoFlags := videoFlags or SDL_HWACCEL;
+  if SDL_GL_SetSwapInterval(1) < 0 then begin
+      WriteLn('Warning: Unable to set VSync! SDL Error: ', SDL_GetError);
+    end;
 
   // Setzen der OpenGL-Attribute
-  SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );
-  SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 5 );
-  SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 5 );
-  SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
-  SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
-
-  // Fenstertitel festlegen
-  SDL_WM_SetCaption( WINDOWS_CAPTION , nil);
-
-  videoflags := videoFlags or SDL_RESIZABLE;    // Enable window resizing
-
-  // Initalisierung der Surface
-  surface := SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP,videoflags );
-  if ( surface = nil ) then
-  begin
-    //Log.LogError('Erzeugen einer OpenGL-Zeichenfläche schlug fehl: '+SDL_GetError,'SDL_Init' );
-    Quit_App;
-  end;
-
+  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
+  //SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );
+  //SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 5 );
+  //SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 5 );
+  //SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
+  //SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
   // Initalisierung des Timers
   SDL_Init(SDL_INIT_TIMER);
 end;
@@ -217,26 +212,9 @@ begin;
           glHandleKeyPress( @event.key.keysym );
         end;
 
-        // Fenster-Größe hat sich verändert
-        SDL_VIDEORESIZE :
-        begin
-          surface := SDL_SetVideoMode( event.resize.w, event.resize.h, SCREEN_BPP, videoflags );
 
-          if ( surface = nil ) then
-          begin
-            Log.LogError('Surface bei Größenänderung verloren: '+SDL_GetError,'EVENT_RESIZE' );
-            Quit_App;
-          end;
-
-          glResizeWindow( event.resize.w, event.resize.h );
-        end;
       end;
     end;
-end;
-begin;
-    SDL_WM_SetCaption(pChar( WINDOWS_CAPTION + ' ['+IntToStr(Round(FPSCount * 1000/FPS_INTERVAL))+' FPS]') , nil);
-    FPSCount := 0;
-    Result := interval;
 end;
 
 

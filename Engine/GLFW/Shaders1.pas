@@ -1,0 +1,69 @@
+unit Shaders1;
+
+interface
+
+uses
+  {$IF Defined(MSWINDOWS)}
+  Winapi.OpenGL,
+  Winapi.OpenGLExt,
+  {$ELSEIF Defined(MACOS) and not Defined(IOS)}
+  Macapi.CocoaTypes,
+  Macapi.OpenGL,
+  {$ENDIF }
+  System.Math.Vectors,
+  Neslib.Glfw3;
+
+const
+  VERTEX_SHADER =
+    'uniform mat4 MVP;'#10+
+    'attribute vec3 vCol;'#10+
+    'attribute vec2 vPos;'#10+
+    'varying vec3 color;'#10+
+
+    'void main()'#10+
+    '{'#10+
+    '  gl_Position = MVP * vec4(vPos, 0.0, 1.0);'#10+
+    '  color = vCol;'#10+
+    '}'#10;
+
+const
+  FRAGMENT_SHADER =
+    'varying vec3 color;'#10+
+
+    'void main()'#10+
+    '{'#10+
+    '  gl_FragColor = vec4(color, 1.0);'#10+
+    '}';
+
+procedure CompileShaders;
+
+implementation
+
+uses glfwFunctions, demo1;
+
+procedure CompileShaders;
+begin
+  glGenBuffers(1, @VertexBuffer);
+  glBindBuffer(GL_ARRAY_BUFFER, VertexBuffer);
+  glBufferData(GL_ARRAY_BUFFER, SizeOf(VERTICES), @VERTICES, GL_STATIC_DRAW);
+
+  VertexShader := glCreateShader(GL_VERTEX_SHADER);
+  Source := VERTEX_SHADER;
+  glShaderSource(VertexShader, 1, @Source, nil);
+  Assert(glGetError = GL_NO_ERROR);
+  glCompileShader(VertexShader);
+
+  FragmentShader := glCreateShader(GL_FRAGMENT_SHADER);
+  Source := FRAGMENT_SHADER;
+  glShaderSource(FragmentShader, 1, @Source, nil);
+  Assert(glGetError = GL_NO_ERROR);
+  glCompileShader(FragmentShader);
+
+  ShaderProgram := glCreateProgram;
+  glAttachShader(ShaderProgram, VertexShader);
+  glAttachShader(ShaderProgram, FragmentShader);
+  glLinkProgram(ShaderProgram);
+  Assert(glGetError = GL_NO_ERROR);
+end;
+
+end.

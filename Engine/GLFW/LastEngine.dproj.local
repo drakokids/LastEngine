@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/12/14 22:33:13.000.585,C:\Users\Yoga\Documents\Embarcadero\Studio\Projects\Project2.dproj=C:\LuisLibs\GitHub\LastEngine\Engine\GLFW\LastEngine.dproj</Transaction>
+    <Transaction>2023/12/14 22:38:32.293,=C:\LuisLibs\GitHub\LastEngine\Engine\GLFW\Unit1.pas</Transaction>
+    <Transaction>2023/12/14 22:38:50.779,C:\LuisLibs\GitHub\LastEngine\Engine\GLFW\glfwFunctions.pas=C:\LuisLibs\GitHub\LastEngine\Engine\GLFW\Unit1.pas</Transaction>
+    <Transaction>2023/12/14 22:42:26.964,=C:\LuisLibs\GitHub\LastEngine\Engine\GLFW\Unit1.pas</Transaction>
+    <Transaction>2023/12/14 22:42:36.157,C:\LuisLibs\GitHub\LastEngine\Engine\GLFW\Demo1.pas=C:\LuisLibs\GitHub\LastEngine\Engine\GLFW\Unit1.pas</Transaction>
+    <Transaction>2023/12/14 22:43:41.559,=C:\LuisLibs\GitHub\LastEngine\Engine\GLFW\Unit1.pas</Transaction>
+    <Transaction>2023/12/14 22:44:45.046,C:\LuisLibs\GitHub\LastEngine\Engine\GLFW\Shaders1.pas=C:\LuisLibs\GitHub\LastEngine\Engine\GLFW\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

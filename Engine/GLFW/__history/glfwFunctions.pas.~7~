@@ -1,0 +1,50 @@
+unit glfwFunctions;
+
+interface
+
+uses
+  System.StartUpCopy,
+  {$IF Defined(MSWINDOWS)}
+  Winapi.OpenGL,
+  {$ELSE}
+  Macapi.CocoaTypes,
+  {$ENDIF }
+  System.Math.Vectors,
+  Neslib.Glfw3;
+
+type
+  TVertex = record
+    X, Y: Single;
+    R, G, B: Single;
+  end;
+
+var
+  Window: TGLFWwindow;
+  VertexBuffer, VertexShader, FragmentShader, ShaderProgram: GLuint;
+  MVPLocation, VPosLocation, VColLocation: GLint;
+  Source: PAnsiChar;
+  Ratio: Single;
+  Width, Height: Integer;
+  M, P, MVP: TMatrix3D;
+
+procedure ErrorCallback(error: Integer; const description: PAnsiChar); cdecl;
+procedure InitGlfw(sizeW,sizeH: integer);
+
+
+implementation
+
+procedure ErrorCallback(error: Integer; const description: PAnsiChar); cdecl;
+var
+  Desc: String;
+begin
+  Desc := String(AnsiString(description));
+  writeln('GLFW Error ' +  Desc);
+end;
+
+procedure InitGlfw(sizeW,sizeH: integer);
+begin
+
+end;
+
+
+end.

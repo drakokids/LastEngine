@@ -1,0 +1,15 @@
+unit Demo1;
+
+interface
+
+uses glfwFunctions;
+
+const
+  VERTICES: array [0..2] of TVertex = (
+    (X: -0.6; Y: -0.4; R: 1.0; G: 0.0; B: 0.0),
+    (X:  0.6; Y: -0.4; R: 0.0; G: 1.0; B: 0.0),
+    (X:  0.0; Y:  0.6; R: 0.0; G: 0.0; B: 1.0));
+
+implementation
+
+end.
