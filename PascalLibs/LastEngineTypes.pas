@@ -8,6 +8,11 @@ const
   OPENGL2D_RENDER = 11;
   D2D_RENDER = 12;
 
+type
+  LE_Color=record
+    red,green,blue,alpha: byte;
+  end;
+
 implementation
 
 end.

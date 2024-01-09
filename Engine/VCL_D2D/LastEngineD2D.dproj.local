@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/01/03 12:40:38.000.248,=C:\Users\Yoga\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2024/01/03 12:41:05.000.596,C:\Users\Yoga\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\LuisLibs\GitHub\LastEngine\Engine\VCL_D2D\MainUnit.pas</Transaction>
+    <Transaction>2024/01/03 12:41:05.000.596,C:\Users\Yoga\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\LuisLibs\GitHub\LastEngine\Engine\VCL_D2D\MainUnit.dfm</Transaction>
+    <Transaction>2024/01/03 12:41:19.000.043,C:\Users\Yoga\Documents\Embarcadero\Studio\Projects\Project2.dproj=C:\LuisLibs\GitHub\LastEngine\Engine\VCL_D2D\LastEngineD2D.dproj</Transaction>
+    <Transaction>2024/01/04 19:39:21.000.494,=C:\LuisLibs\GitHub\LastEngine\Engine\VCL_D2D\Unit1.pas</Transaction>
+    <Transaction>2024/01/04 19:39:42.000.026,C:\LuisLibs\GitHub\LastEngine\Engine\VCL_D2D\Unit1.pas=C:\LuisLibs\GitHub\LastEngine\PascalLibs\LastEngineVCL.pas</Transaction>
+  </Transactions>
+</BorlandProject>

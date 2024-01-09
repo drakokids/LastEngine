@@ -191,9 +191,6 @@
             <Form>MainForm</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="..\..\PascalLibs\LastEngine.pas"/>
-        <DCCReference Include="..\..\PascalLibs\LastEngineTypes.pas"/>
-        <DCCReference Include="..\..\PascalLibs\FMXRenderer.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

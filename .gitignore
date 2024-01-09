@@ -12,3 +12,6 @@ Engine3D/README.md.backup
 *.backup
 /Engine3D/glfw/lastengine3d/.vs/
 /Engine3D/glfw/lastengine3d/x64/
+*.~*
+*.compiled
+*.o

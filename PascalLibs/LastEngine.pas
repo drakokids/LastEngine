@@ -38,13 +38,10 @@ uses
 Classes, Types, SysUtils, Forms, controls,{$IFDEF DGL_WIN}windows, {$ENDIF},
 OpenGLRenderer,   //Only OpenGL to support win+linux
 {$ELSE}
- System.types,System.UIConsts, System.UITypes, system.SysUtils,system.Classes,
+ System.types,System.UIConsts, System.UITypes, system.SysUtils,system.Classes;
 {$ENDIF}
 {$IFDEF FRAMEWORK_VCL}
 Vcl.Forms, GLFWRenderer, OpenGLRenderer, D2DRenderer, GDIRenderer;//Can choose
-{$ENDIF}
-{$IFDEF FRAMEWORK_FMX}
-FMX.Forms, FMXRenderer; //Renderer will use TCanvas (D2D, GPU, Mac or GDI+)
 {$ENDIF}
 
 
@@ -84,13 +81,21 @@ begin
    fShowGuidelines:=false;
    fShowFps:=false;
 
+   {$IFDEF FRAMEWORK_VCL}
    case RenderMode of
-     OpenGL3D_render: CreateRenderer(AOwner,true);
-     OPENGL2D_RENDER: CreateRenderer(AOwner,false);
+     OpenGL3D_render: CreateRenderer(AOwner,true); //OpenGL
+     OPENGL2D_RENDER: CreateRenderer(AOwner,false); //Direct2D
      D2D_RENDER: CreateD2DRenderer(AOwner);
    else
      CreateGDIPRenderer(AOwner);
    end;
+   {$ENDIF}
+   {$IFDEF FPC}
+   case RenderMode of
+     OpenGL3D_render: CreateRenderer(AOwner,true); //OpenGL
+     OPENGL2D_RENDER: CreateRenderer(AOwner,false); //SFML
+   end;
+   {$ENDIF}
 
    Application.OnIdle := {$IFDEF FPC}@{$ENDIF}ApplicationEventsIdle;
    if vFullScreen then FullScreen(AOwner);
@@ -100,15 +105,24 @@ end;
 
 destructor TLastEngine.Destroy;
 begin
+
+  {$IFDEF FRAMEWORK_VCL}
   if GameRenderMode=D2D_RENDER then DestroyD2DRenderer
   else if GameRenderMode=GDIPLUS_RENDER then DestroyGDIPRenderer
   else DestroyRenderer;
+  {$ENDIF}
+  {$IFDEF FPC}
+  if GameRenderMode=D2D_RENDER then DestroyD2DRenderer
+  else DestroyRenderer;
+  {$ENDIF}
   inherited;
 end;
 
 procedure TLastEngine.StartEngine;
 begin
-    if GameRenderMode<>D2D_RENDER then glInit();
+    {$IFDEF FRAMEWORK_VCL or FPC}
+    if GameRenderMode=OpenGL3D_render then glInit();
+    {$ENDIF}
     isrunning:=true;
 end;
 
@@ -138,7 +152,8 @@ end;
 
 procedure TLastEngine.ScreenResize(width, height: integer);
 begin
-   if (GameRenderMode=OPENGL3D_RENDER) or (GameRenderMode=OPENGL2D_RENDER) then ResizeView(width,height);
+   if (GameRenderMode=OPENGL3D_RENDER) or
+      (GameRenderMode=OPENGL2D_RENDER) then ResizeView(width,height);
 end;
 
 end.

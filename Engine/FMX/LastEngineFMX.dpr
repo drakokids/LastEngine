@@ -3,10 +3,7 @@ program LastEngineFMX;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  MainUnit in 'MainUnit.pas' {MainForm},
-  LastEngine in '..\..\PascalLibs\LastEngine.pas',
-  LastEngineTypes in '..\..\PascalLibs\LastEngineTypes.pas',
-  FMXRenderer in '..\..\PascalLibs\FMXRenderer.pas';
+  MainUnit in 'MainUnit.pas' {MainForm};
 
 {$R *.res}
 
