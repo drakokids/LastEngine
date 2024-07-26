@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/06/04 21:34:09.000.257,=C:\Users\Drakobox\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/06/09 12:10:06.000.084,=C:\Users\Drakobox\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/06/09 12:10:28.000.160,=C:\Users\Drakobox\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/04/16 11:56:24.000.510,=C:\Users\Drakobox\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/11/29 19:33:01.000.333,=C:\Users\Drakobox\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/12/19 12:30:03.000.965,=C:\Users\Drakobox\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/12/04 08:16:30.000.212,=C:\Users\Drakobox\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/03/16 18:05:47.301,=C:\Users\Drakobox\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/03/16 18:06:22.215,C:\Luislibs\LastEngine\Engine\VCL_SFML\mainUnit.pas=C:\Users\Drakobox\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/03/16 18:06:22.215,C:\Luislibs\LastEngine\Engine\VCL_SFML\mainUnit.dfm=C:\Users\Drakobox\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2024/03/16 18:06:34.175,C:\Luislibs\LastEngine\Engine\VCL_SFML\testVCL_SFML.dproj=C:\Users\Drakobox\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+</BorlandProject>

@@ -25,6 +25,7 @@ type
     procedure FullScreen(form: TForm);
     procedure ScreenResize(width, height: integer);
   published
+    property Game: TGame read FGame;
     property ShowGuidelines: boolean read fShowGuidelines write fShowGuidelines;
     property EditorMode: boolean read fEditorMode write fEditorMode;
     property ShowFps: boolean read fShowFps write fShowFps;

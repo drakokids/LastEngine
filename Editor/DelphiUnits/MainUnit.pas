@@ -97,6 +97,8 @@ type
     Options1: TMenuItem;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
+    N3: TMenuItem;
+    Properties1: TMenuItem;
     procedure test31Click(Sender: TObject);
     procedure Options1Click(Sender: TObject);
     procedure New1Click(Sender: TObject);
@@ -112,15 +114,25 @@ var
   MainForm: TMainForm;
   My3DTest: TFormTest3D;
 
+const
+  VERSION='0.3.0';
+
 implementation
 
 {$R *.dfm}
 
-uses OptionsDlg, ProjectPropertiesDlg;
+uses OptionsDlg, ProjectPropertiesDlg, inifiles;
 
 procedure TMainForm.New1Click(Sender: TObject);
+var myini: TInifile;
 begin
-    ProjectProperties.showmodal;
+    if ProjectProperties.execute then
+     begin
+      myini:=TInifile.Create(ProjectProperties.dir+'\'+ProjectProperties.EditProjectName.text+'.lastengine');
+      myini.WriteString('PROJECT','NAME',ProjectProperties.EditProjectName.text);
+      myini.WriteString('PROJECT','TYPE',ProjectProperties.EditProjectType.text);
+      myini.Free;
+     end;
 end;
 
 procedure TMainForm.Open1Click(Sender: TObject);

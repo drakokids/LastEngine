@@ -5,16 +5,16 @@ interface
 uses FMX.Types, FMX.Forms, FMX.Graphics, System.UITypes, System.Types,
   System.SysUtils;
 
-procedure CreateFMXRenderer(Form: TForm);
+procedure CreateFMXRenderer;
 procedure DestroyFMXRenderer;
 procedure ResizeView(width,height:integer);
-procedure RenderFMX(Canvas: TCanvas; fps: integer);
+procedure RenderFPS(Canvas: TCanvas; fps: integer);
 
 var somevar: integer;
 
 implementation
 
-procedure CreateFMXRenderer(Form: TForm);
+procedure CreateFMXRenderer;
 begin
   GlobalUseGPUCanvas:=true;
 end;
@@ -29,13 +29,10 @@ begin
 //
 end;
 
-procedure RenderFMX(Canvas: TCanvas; fps: integer);
+procedure RenderFPS(Canvas: TCanvas; fps: integer);
 begin
-  Canvas.BeginScene;
 
-  Canvas.Fill.Color:= TAlphaColors.Red;
-  Canvas.Stroke.Color :=  TAlphaColors.Blue;
-  Canvas.FillRect(Rectf(10,10,100,100),1);
+
 
   Canvas.Font.Style := [];
   Canvas.Font.Size := 12;
@@ -43,7 +40,6 @@ begin
   Canvas.FillText(TRectF.Create(0, 0, 300, 295), 'fps:'+inttostr(fps), false,
            100, [], TTextAlign.Center, TTextAlign.Center);
 
-  Canvas.EndScene;
 end;
 
 end.

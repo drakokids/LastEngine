@@ -124,42 +124,22 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="..\..\2023\LastEngine_VCL\MainUnit.pas">
+        <DCCReference Include="DelphiUnits\MainUnit.pas">
             <Form>MainForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\..\2023\LastEngine_VCL\test3Dfrm.pas">
+        <DCCReference Include="DelphiUnits\test3Dfrm.pas">
             <Form>FormTest3D</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\OpenGLRenderer.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\OpenGLColorsHelper.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\OpenGLShapersHelper.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\LastEngine.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\GLSLshader.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\GuiUnit.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\GuiObjectUnit.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\SceneUnit.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\World2DUnit.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\World3DUnit.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\Terrain3DUnit.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\Object3DUnit.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\SpriteUnit.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\ParticlesUnit.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\RoadsUnit.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\TilemapUnit.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\LastEngineTypes.pas"/>
-        <DCCReference Include="..\..\2023\LastEngine_VCL\ProjectPropertiesDlg.pas">
-            <Form>ProjectProperties</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\..\2023\LastEngine_VCL\OptionsDlg.pas">
+        <DCCReference Include="DelphiUnits\OptionsDlg.pas">
             <Form>OptionsDialog</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\D2DRenderer.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\GDIPRenderer.pas"/>
-        <DCCReference Include="..\..\2023\LastEngineLibrary\EngineFileManager.pas"/>
+        <DCCReference Include="DelphiUnits\ProjectPropertiesDlg.pas">
+            <Form>ProjectProperties</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

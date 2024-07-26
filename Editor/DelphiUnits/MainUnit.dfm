@@ -2,8 +2,8 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'Last Engine v0.2'
-  ClientHeight = 1463
-  ClientWidth = 2101
+  ClientHeight = 766
+  ClientWidth = 1323
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,10 +15,10 @@ object MainForm: TMainForm
   Scaled = False
   TextHeight = 15
   object Panel1: TPanel
-    Left = 272
-    Top = 64
-    Width = 1570
-    Height = 1353
+    Left = 255
+    Top = 8
+    Width = 714
+    Height = 657
     Caption = 'Panel1'
     TabOrder = 0
   end
@@ -26,9 +26,10 @@ object MainForm: TMainForm
     Left = 0
     Top = 0
     Width = 249
-    Height = 1463
+    Height = 766
     Align = alLeft
     TabOrder = 1
+    ExplicitHeight = 1041
     object PanelLevels: TPanel
       Left = 8
       Top = 16
@@ -338,12 +339,14 @@ object MainForm: TMainForm
     end
   end
   object Panel6: TPanel
-    Left = 1848
+    Left = 1070
     Top = 0
     Width = 253
-    Height = 1463
+    Height = 766
     Align = alRight
     TabOrder = 2
+    ExplicitLeft = 1671
+    ExplicitHeight = 1041
     object Panel7: TPanel
       Left = 1
       Top = 1
@@ -357,7 +360,7 @@ object MainForm: TMainForm
       Left = 1
       Top = 25
       Width = 251
-      Height = 1437
+      Height = 740
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -494,6 +497,7 @@ object MainForm: TMainForm
         0000000109570069006E00640077006800690072006C00260000000000000000
         000000FFFFFFFFFFFFFFFF000000000000000000000000010446006900720065
         00}
+      ExplicitHeight = 1015
     end
   end
   object MainMenu1: TMainMenu
@@ -524,6 +528,12 @@ object MainForm: TMainForm
       object Saveas1: TMenuItem
         Caption = 'Save as'
         OnClick = Saveas1Click
+      end
+      object N3: TMenuItem
+        Caption = '-'
+      end
+      object Properties1: TMenuItem
+        Caption = 'Properties'
       end
       object N2: TMenuItem
         Caption = '-'

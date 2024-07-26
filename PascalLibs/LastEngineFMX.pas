@@ -30,6 +30,7 @@ type
     procedure ScreenResize(width, height: integer);
     procedure CanvasPaint(Sender: TObject; Canvas: TCanvas;const ARect: TRectF);
   published
+    property Game: TGame read FGame;
     property ShowGuidelines: boolean read fShowGuidelines write fShowGuidelines;
     property EditorMode: boolean read fEditorMode write fEditorMode;
     property ShowFps: boolean read fShowFps write fShowFps;
@@ -38,7 +39,7 @@ type
 implementation
 
 { TLastEngine }
-uses LastEngineTypes, FMXRenderer;
+uses FMXRenderer;
 
 constructor TLastEngineFMX.Create(AOwner: TForm; GameWidth, GameHeight: integer;
   GameTitle: string; vFullScreen: boolean);
@@ -54,6 +55,8 @@ begin
   framestimer.Interval:=1000; //Once every second
   framestimer.OnTimer:=CustomFramesTimer;
 
+  FGame:=TGame.Create;
+
   CreateFMXRenderer(AOwner);
   AOwner.OnPaint:=CanvasPaint;
 
@@ -68,6 +71,7 @@ end;
 destructor TLastEngineFMX.Destroy;
 begin
    DestroyFMXRenderer;
+   FGame.free;
    inherited;
 end;
 
